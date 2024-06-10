@@ -6,6 +6,7 @@
       <img :src="store.imgBasePath + post.image" :alt="post.title">
     </li>
   </ul>
+  <button @click="getAllPosts()" class="btn btn-primary">cambia pagina</button>
 </template>
 
 <script>
@@ -16,7 +17,8 @@ export default {
   data() {
     return {
       store,
-      posts: []
+      posts: [],
+
     }
   },
   methods: {
@@ -24,6 +26,9 @@ export default {
       axios.get(this.store.apiBaseUrl + '/posts').then((res) => {
         console.log(res.data);
         this.posts = res.data.results;
+        //se paginazione
+        //this.posts = res.data.results.data;
+        //this.currentPage = res.data.results.current_page;
       });
     },
   },
