@@ -10,7 +10,9 @@
 
 
 <script>
-import HeaderComponent from './components/HeaderComponent.vue'
+import HeaderComponent from './components/HeaderComponent.vue';
+import { store } from './store';
+import axios from 'axios';
 export default {
   name: 'App',
   components: {
@@ -18,8 +20,19 @@ export default {
   },
   data() {
     return {
-
+      store
     }
+  },
+  methods: {
+    getCategories() {
+      axios.get(this.store.apiBaseUrl + '/categories').then((res) => {
+        console.log(res.data);
+        this.store.categories = res.data.results;
+      });
+    }
+  },
+  mounted() {
+    this.getCategories();
   }
 }
 </script>
