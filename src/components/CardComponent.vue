@@ -7,7 +7,7 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">{{ item.title }}</h5>
-                    <p class="card-text" v-html="item.content"></p>
+                    <p class="card-text" v-html="item.content.substring(0, 30) + '...'"></p>
                     <p class="card-text"><small class="text-body-secondary">Last updated: 3 {{ item.updated_at
                             }}</small>
                     </p>
@@ -32,11 +32,18 @@ export default {
     },
     computed: {
         getImage() {
-
             return this.item.image ? this.store.imgBasePath + this.item.image : '/images/bar-neon.png';
         }
     }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+p {
+    margin-bottom: 0.1rem;
+}
+
+.card img {
+    aspect-ratio: 1/1;
+}
+</style>

@@ -4,6 +4,8 @@ import AppHome from "./pages/AppHome.vue";
 import PostList from "./pages/PostList.vue";
 import PostComponent from "./pages/PostComponent.vue";
 import NotFound from "./pages/NotFound.vue";
+import ContactComponent from "./pages/ContactComponent.vue";
+import AboutComponent from "./pages/AboutComponent.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,6 +24,16 @@ const router = createRouter({
       path: "/posts/:slug",
       name: "single-post",
       component: PostComponent,
+    },
+    {
+      path: "/about",
+      name: "about-us",
+      component: AboutComponent,
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      component: ContactComponent,
     },
     {
       path: "/:pathMatch(.*)*",

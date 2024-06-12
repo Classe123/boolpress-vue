@@ -46,6 +46,14 @@ export default {
                     label: 'Posts',
                     routeName: 'posts'
                 },
+                {
+                    label: 'About',
+                    routeName: 'about-us'
+                },
+                {
+                    label: 'Contact',
+                    routeName: 'contact'
+                },
                 // {
                 //   label: 'Categorie',
                 //   routeName: 'categories'

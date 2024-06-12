@@ -1,9 +1,9 @@
 <template>
     <div v-if="post">
-        <h1>{{ post.title }}</h1>
-        <img :src="store.imgBasePath + post.image" :alt="post.title">
+        <img :src="getImage" class="postimg" :alt="post.title">
+        <h1 class="my-4">{{ post.title }}</h1>
         <p>{{ post.content }}</p>
-        <span>{{ post.category?.name }}</span>
+        <p>{{ post.category?.name }}</p>
         <RouterLink :to="{ name: 'single-post', params: { 'slug': 'eum-porro-sed-optio-quis-itaque-ex-harum' } }">Leggi
             altro articolo</RouterLink>
     </div>
@@ -32,6 +32,12 @@ export default {
                 // console.log(error.response.data);
                 this.$router.push({ name: 'not-found' });
             }).finally();
+        },
+
+    },
+    computed: {
+        getImage() {
+            return this.post.image ? this.store.imgBasePath + this.post.image : '/images/bar-neon.png';
         }
     },
     mounted() {
@@ -50,4 +56,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.postimg {
+    object-fit: cover;
+    width: 100%;
+    height: 40vw;
+}
+</style>
